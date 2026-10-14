@@ -39,27 +39,27 @@ h1{font-size:clamp(25px,4.5vw,58px);line-height:1.04;letter-spacing:-.045em;marg
 
 /* Layer thông báo xoay ngang màn hình (cho thiết bị di động dọc) */
 #rotate-notice{
-  position:fixed;inset:0;z-index:9999;
-  background:#17091fe6;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  display:none;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;padding:24px;color:#fff
+	position:fixed;inset:0;z-index:9999;
+	background:#17091fe6;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+	display:none;flex-direction:column;justify-content:center;align-items:center;
+	text-align:center;padding:24px;color:#fff
 }
 #rotate-notice .phone-icon{
-  width:64px;height:64px;margin-bottom:18px;
-  animation:rotate-hint 2s ease-in-out infinite
+	width:64px;height:64px;margin-bottom:18px;
+	animation:rotate-hint 2s ease-in-out infinite
 }
 #rotate-notice h2{font-size:22px;margin:0 0 8px;color:#ff8ec7}
 #rotate-notice p{font-size:14px;color:#e2cbe0;margin:0;max-width:280px;line-height:1.5}
 
 @keyframes rotate-hint{
-  0%,10%{transform:rotate(0deg)}
-  50%,60%{transform:rotate(-90deg)}
-  90%,100%{transform:rotate(0deg)}
+	0%,10%{transform:rotate(0deg)}
+	50%,60%{transform:rotate(-90deg)}
+	90%,100%{transform:rotate(0deg)}
 }
 
 /* Chỉ hiển thị thông báo xoay màn hình khi ở trên thiết bị di động (màn hình dọc) */
 @media(max-width:900px) and (orientation:portrait){
-  #rotate-notice{display:flex}
+	#rotate-notice{display:flex}
 }
 
 @keyframes enter{from{opacity:0;transform:translateY(18px) scale(.98);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
@@ -93,12 +93,12 @@ h1{font-size:clamp(22px,5.2vh,40px);margin:1vh auto}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition:none!important}}
 </style></head><body>
 <div id="rotate-notice">
-  <svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke="#ff4fa3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-    <path d="M12 18h.01"></path>
-  </svg>
-  <h2>Vui lòng xoay ngang điện thoại</h2>
-  <p>Xoay ngang thiết bị để có trải nghiệm xem trọn vẹn và đẹp nhất nhé! ✨</p>
+	<svg class="phone-icon" viewBox="0 0 24 24" fill="none" stroke="#ff4fa3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+		<rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+		<path d="M12 18h.01"></path>
+	</svg>
+	<h2>Vui lòng xoay ngang điện thoại</h2>
+	<p>Xoay ngang thiết bị để có trải nghiệm xem trọn vẹn và đẹp nhất nhé! ✨</p>
 </div>
 
 <div class="aurora a"></div><div class="aurora b"></div>
@@ -122,16 +122,16 @@ for(let i=0;i<12;i++)setTimeout(particle,i*180);setInterval(particle,750);for(le
 
 /* Tự động kích hoạt toàn màn hình (Fullscreen) trên mọi thiết bị khi người dùng click/chạm */
 function enableFullscreen() {
-  const elem = document.documentElement;
-  if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen().catch(() => {});
-    } else if (elem.webkitRequestFullscreen) {
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-      elem.msRequestFullscreen();
-    }
-  }
+	const elem = document.documentElement;
+	if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) {
+		if (elem.requestFullscreen) {
+			elem.requestFullscreen().catch(() => {});
+		} else if (elem.webkitRequestFullscreen) {
+			elem.webkitRequestFullscreen();
+		} else if (elem.msRequestFullscreen) {
+			elem.msRequestFullscreen();
+		}
+	}
 }
 window.addEventListener("click", enableFullscreen, { once: true });
 window.addEventListener("touchstart", enableFullscreen, { once: true });
