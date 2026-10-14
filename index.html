@@ -1,14 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="refresh" content="0; url=duyen/index.html" />
-    <title>Chúc mừng 20/10</title>
+    <meta name="theme-color" content="#050308" />
+    <!-- <meta http-equiv="refresh" content="0; url=duyen/index.html" /> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>ITK25 - Chúc mừng 20/10</title>
   </head>
   <body>
-    <script>
-      window.location.href = "duyen/index.html";
-    </script>
+    <main class="page">
+      <!-- Lời chúc (giữ nguyên nội dung cũ) -->
+      <div class="top-div">
+        <div class="main-text-border">
+          <div class="main-text">
+            <span class="greet">Chúc mừng 20/10!</span> <br />
+            <span class="from">From ITK25 with love <span class="heart">❤</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 nút: hàng 1 = Text + GVCN, hàng 2 = HS1 + HS2 + HS3 -->
+      <nav class="menu" aria-label="Menu chính">
+        <a class="card" href="text.html">Text</a>
+        <a class="card" href="gvcn.html">GVCN</a>
+        <a class="card" href="hs1.html">HS1</a>
+        <a class="card" href="hs2.html">HS2</a>
+        <a class="card" href="hs3.html">HS3</a>
+      </nav>
+    </main>
+
+    <script src="scripts.js"></script>
   </body>
 </html>
