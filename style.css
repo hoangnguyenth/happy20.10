@@ -271,3 +271,25 @@ body::before {
     animation: none !important;
   }
 }
+
+/* Lời chúc thay thế card Text */
+.menu > .main-text-border {
+  grid-column: span 3;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+}
+
+.menu > .main-text-border .main-text {
+  width: 100%;
+  padding: clamp(16px, 3vw, 30px) 12px;
+}
+
+.menu > .main-text-border .greet {
+  font-size: clamp(1.2rem, 3vw, 2rem);
+}
+
+.menu > .main-text-border .from {
+  font-size: clamp(0.7rem, 1.6vw, 1rem);
+  letter-spacing: 0.04em;
+}
