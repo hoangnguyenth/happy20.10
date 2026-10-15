@@ -6,7 +6,9 @@
   --black: #050308;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -52,33 +54,56 @@ body::before {
 .page {
   position: relative;
   width: min(100%, 1040px);
+  height: calc(100vh - clamp(40px, 8vw, 108px));
+  height: calc(100dvh - clamp(40px, 8vw, 108px));
+
   display: flex;
   flex-direction: column;
-  gap: clamp(28px, 5vw, 56px);
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Nửa trên: 2 cột (Text + GVCN) */
+.upper-row {
+  width: 100%;
+  height: 47%;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(14px, 2.8vw, 28px);
+  align-items: center;
+}
+
+/* Nửa dưới: 3 cột đều nhau cho HS1, HS2, HS3 */
+.lower-row {
+  width: 100%;
+  height: 47%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2.8vw, 28px);
+  align-items: center;
 }
 
 /* ---------- Lời chúc ---------- */
 
-.top-div {
-  display: flex;
-  justify-content: center;
-}
-
-/* khung ngoài mảnh */
 .main-text-border {
-  width: min(100%, 720px);
+  width: 100%;
+  height: 100%;
   padding: 8px;
   border: 1px solid #ff4fc333;
   border-radius: 30px 38px 32px 36px / 33px 28px 38px 31px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* khung neon chính */
 .main-text {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: clamp(22px, 4.5vw, 44px) clamp(16px, 4vw, 40px);
+  padding: clamp(16px, 3vw, 24px);
   text-align: center;
 
   background: linear-gradient(145deg, #1b0b19ef, #08050b 72%);
@@ -94,7 +119,7 @@ body::before {
 }
 
 .greet {
-  font-size: clamp(1.9rem, 6.4vw, 3.6rem);
+  font-size: clamp(1.4rem, 3.2vw, 2.4rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: 0.04em;
@@ -106,8 +131,8 @@ body::before {
 }
 
 .from {
-  margin-top: 0.6em;
-  font-size: clamp(0.95rem, 2.8vw, 1.35rem);
+  margin-top: 0.4em;
+  font-size: clamp(0.75rem, 1.8vw, 1.1rem);
   font-weight: 600;
   letter-spacing: 0.1em;
   color: var(--soft);
@@ -136,23 +161,18 @@ body::before {
   }
 }
 
-/* ---------- Nút (copy từ file mẫu) ---------- */
-
-.menu {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: clamp(14px, 2.8vw, 28px);
-  align-items: stretch;
-}
+/* ---------- Khối Nút Chung (.card) ---------- */
 
 .card {
-  grid-column: span 2; /* HS1, HS2, HS3: 3 nút / hàng */
   position: relative;
   isolation: isolate;
-  min-height: clamp(110px, 15vw, 156px);
-  display: grid;
-  place-items: center;
-  padding: 18px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  text-align: center;
 
   border: 1px solid var(--hot);
   border-radius: 22px 30px 24px 28px / 25px 20px 30px 23px;
@@ -160,7 +180,7 @@ body::before {
 
   color: var(--white);
   text-decoration: none;
-  font-size: clamp(1.4rem, 3.8vw, 2.5rem);
+  font-size: clamp(1.3rem, 3.2vw, 2.2rem);
   font-weight: 800;
   letter-spacing: 0.08em;
   text-shadow:
@@ -190,30 +210,20 @@ body::before {
   z-index: -1;
 }
 
-/* Hàng 1: Text + GVCN, to hơn, mỗi nút chiếm nửa hàng */
-.card:nth-child(-n + 2) {
-  grid-column: span 3;
-  min-height: clamp(112px, 17vw, 174px);
-  font-size: clamp(1.6rem, 4.5vw, 3.1rem);
-}
-
-/* nghiêng nhẹ + bo góc lệch nhau để giống nét vẽ tay trong bố cục */
-.card:nth-child(1) {
-  transform: rotate(-0.4deg);
-}
-.card:nth-child(2) {
-  transform: rotate(0.45deg);
+/* Tạo độ nghiêng nghệ thuật nhẹ nhàng giống thiết kế nét vẽ tay */
+.upper-row .card:nth-child(2) {
+  transform: rotate(0.35deg);
   border-radius: 26px 20px 30px 22px / 22px 28px 20px 30px;
 }
-.card:nth-child(3) {
-  transform: rotate(0.4deg);
+.lower-row .card:nth-child(1) {
+  transform: rotate(-0.3deg);
 }
-.card:nth-child(4) {
-  transform: rotate(-0.35deg);
+.lower-row .card:nth-child(2) {
+  transform: rotate(0.3deg);
   border-radius: 20px 28px 22px 30px / 28px 22px 26px 20px;
 }
-.card:nth-child(5) {
-  transform: rotate(0.5deg);
+.lower-row .card:nth-child(3) {
+  transform: rotate(-0.2deg);
 }
 
 .card:hover,
@@ -221,7 +231,7 @@ body::before {
   outline: none;
   border-color: var(--soft);
   background: linear-gradient(145deg, #32102b, #0b060d 75%);
-  transform: translateY(-5px) rotate(0);
+  transform: translateY(-4px) rotate(0);
   box-shadow:
     inset 0 0 24px #ff2da62a,
     0 0 12px #ff2da6bb,
@@ -235,31 +245,26 @@ body::before {
   transform: translateY(1px) scale(0.99);
 }
 
-/* ---------- Điện thoại ---------- */
+/* ---------- Responsive Điện thoại ---------- */
 
 @media (max-width: 560px) {
   body {
-    padding: 22px 16px;
+    padding: 16px 12px;
   }
 
-  .menu {
+  .page {
+    height: calc(100vh - 32px);
+    height: calc(100dvh - 32px);
     gap: 12px;
   }
 
-  .card,
-  .card:nth-child(-n + 2) {
-    min-height: 104px;
-    padding: 10px;
-    letter-spacing: 0.05em;
+  .upper-row,
+  .lower-row {
+    gap: 10px;
   }
 
-  .card:nth-child(-n + 2) {
-    min-height: 120px;
-    font-size: clamp(1.3rem, 6.4vw, 1.9rem);
-  }
-
-  .card:nth-child(n + 3) {
-    font-size: clamp(1.1rem, 5.2vw, 1.5rem);
+  .card {
+    font-size: clamp(1.1rem, 4.5vw, 1.5rem);
   }
 }
 
@@ -270,26 +275,4 @@ body::before {
     transition: none !important;
     animation: none !important;
   }
-}
-
-/* Lời chúc thay thế card Text */
-.menu > .main-text-border {
-  grid-column: span 3;
-  width: 100%;
-  min-width: 0;
-  display: flex;
-}
-
-.menu > .main-text-border .main-text {
-  width: 100%;
-  padding: clamp(16px, 3vw, 30px) 12px;
-}
-
-.menu > .main-text-border .greet {
-  font-size: clamp(1.2rem, 3vw, 2rem);
-}
-
-.menu > .main-text-border .from {
-  font-size: clamp(0.7rem, 1.6vw, 1rem);
-  letter-spacing: 0.04em;
 }
