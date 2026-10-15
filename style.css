@@ -4,6 +4,14 @@
   --soft: #ff9cda;
   --white: #fff8fd;
   --black: #050308;
+
+  /* ==========================================================
+     NHÉT 4 MÀU VÀO 4 NÚT Ở ĐÂY (Bạn có thể đổi mã màu tùy ý)
+     ========================================================== */
+  --color-gvcn: #ffe600; /* Màu cho nút GVCN */
+  --color-duyen: #52f896; /* Màu cho nút H Duyên */
+  --color-lehan: #ff4fa3; /* Màu cho nút Lê Hân */
+  --color-tuanh: #00f0ff; /* Màu cho nút Tú Anh */
 }
 
 *,
@@ -37,7 +45,7 @@ body {
   );
 }
 
-/* lưới mờ phía sau cho giống bảng đèn neon */
+/* lưới mờ phía sau */
 body::before {
   content: "";
   position: fixed;
@@ -63,7 +71,7 @@ body::before {
   align-items: center;
 }
 
-/* Nửa trên: 2 cột (Text + GVCN) */
+/* Nửa trên */
 .upper-row {
   width: 100%;
   height: 47%;
@@ -73,7 +81,7 @@ body::before {
   align-items: center;
 }
 
-/* Nửa dưới: 3 cột đều nhau cho HS1, HS2, HS3 */
+/* Nửa dưới */
 .lower-row {
   width: 100%;
   height: 47%;
@@ -112,10 +120,10 @@ body::before {
   border-radius: 22px 30px 24px 28px / 25px 20px 30px 23px;
 
   box-shadow:
-    inset 0 0 22px #ff2da633,
-    0 0 10px var(--hot),
-    0 0 40px #ff2da666,
-    0 0 90px #ff2da633;
+    inset 0 0 50px 50px #ff2da633,
+    0 0 30px var(--hot),
+    0 0 50px #ff2da666,
+    0 0 110px #ff2da633;
 }
 
 .greet {
@@ -174,7 +182,7 @@ body::before {
   padding: 14px;
   text-align: center;
 
-  border: 1px solid var(--hot);
+  border: 1px solid var(--btn-color);
   border-radius: 22px 30px 24px 28px / 25px 20px 30px 23px;
   background: linear-gradient(145deg, #1b0b19ef, #08050b 72%);
 
@@ -184,13 +192,13 @@ body::before {
   font-weight: 800;
   letter-spacing: 0.08em;
   text-shadow:
-    0 0 7px var(--pink),
-    0 0 20px #ff2da688;
+    0 0 7px var(--btn-color),
+    0 0 20px var(--btn-color);
 
   box-shadow:
-    inset 0 0 20px #ff2da615,
-    0 0 9px #ff2da655,
-    0 0 28px #ff2da622;
+    inset 0 0 50px 50px color-mix(in srgb, var(--btn-color) 20%, transparent),
+    /* 0 0 9px color-mix(in srgb, var(--btn-color) 50%, transparent), */
+    /* 0 0 28px color-mix(in srgb, var(--btn-color) 25%, transparent); */;
 
   transition:
     transform 0.22s ease,
@@ -204,41 +212,56 @@ body::before {
   content: "";
   position: absolute;
   inset: 7px;
-  border: 1px solid #ff4fc333;
+  border: 1px solid color-mix(in srgb, var(--btn-color) 30%, transparent);
   border-radius: inherit;
   pointer-events: none;
   z-index: -1;
 }
 
-/* Tạo độ nghiêng nghệ thuật nhẹ nhàng giống thiết kế nét vẽ tay */
-.upper-row .card:nth-child(2) {
+/* ==========================================================
+   GÁN RIÊNG MÀU CHO TỪNG BUTTON THEO THỨ TỰ HTML
+   ========================================================== */
+
+/* Nút 1: GVCN (Nằm ở upper-row, thẻ a thứ nhất) */
+.upper-row a.card:nth-child(2) {
+  --btn-color: var(--color-gvcn);
   transform: rotate(0.35deg);
   border-radius: 26px 20px 30px 22px / 22px 28px 20px 30px;
 }
-.lower-row .card:nth-child(1) {
+
+/* Nút 2: H Duyên (Nằm ở lower-row, thẻ a thứ nhất) */
+.lower-row a.card:nth-child(1) {
+  --btn-color: var(--color-duyen);
   transform: rotate(-0.3deg);
 }
-.lower-row .card:nth-child(2) {
+
+/* Nút 3: Lê Hân (Nằm ở lower-row, thẻ a thứ hai) */
+.lower-row a.card:nth-child(2) {
+  --btn-color: var(--color-lehan);
   transform: rotate(0.3deg);
   border-radius: 20px 28px 22px 30px / 28px 22px 26px 20px;
 }
-.lower-row .card:nth-child(3) {
+
+/* Nút 4: Tú Anh (Nằm ở lower-row, thẻ a thứ ba) */
+.lower-row a.card:nth-child(3) {
+  --btn-color: var(--color-tuanh);
   transform: rotate(-0.2deg);
 }
 
+/* Hiệu ứng hover cho các nút tự động đổi theo biến màu tương ứng */
 .card:hover,
 .card:focus-visible {
   outline: none;
-  border-color: var(--soft);
-  background: linear-gradient(145deg, #32102b, #0b060d 75%);
+  border-color: var(--btn-color);
+  background: linear-gradient(145deg, #251224, #0b060d 75%);
   transform: translateY(-4px) rotate(0);
   box-shadow:
-    inset 0 0 24px #ff2da62a,
-    0 0 12px #ff2da6bb,
-    0 0 36px #ff2da655;
+    inset 0 0 50px 50px color-mix(in srgb, var(--btn-color) 30%, transparent),
+    0 0 30px var(--btn-color),
+    0 0 90px color-mix(in srgb, var(--btn-color) 50%, transparent);
   text-shadow:
-    0 0 8px #ff6fc7,
-    0 0 24px var(--pink);
+    0 0 8px var(--white),
+    0 0 24px var(--btn-color);
 }
 
 .card:active {
